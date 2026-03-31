@@ -71,7 +71,7 @@ $cuotas = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 
 
 
-        <?php if ($_GET['error'] == "1") { ?>
+        <?php if ($this->error == "1") { ?>
 
             <div class='alert alert-danger text-center'>En este momento no es posible realizar tu pedido.</div>
 

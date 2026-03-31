@@ -150,12 +150,12 @@ function fecha_letras($fecha)
 			<div class="row mt-3 align-items-end">
 				<div class="col-lg-3">
 					<label for="fecha1" class="form-label fw-bold">Fecha inicial</label>
-					<input type="date" id="fecha1" name="fecha1" value="<?php echo $_GET['fecha1']; ?>"
+					<input type="date" id="fecha1" name="fecha1" value="<?php echo $this->fecha1_param; ?>"
 						placeholder="Fecha inicial" class="form-control">
 				</div>
 				<div class="col-lg-3">
 					<label for="fecha2" class="form-label fw-bold">Fecha final</label>
-					<input type="date" id="fecha2" name="fecha2" value="<?php echo $_GET['fecha2']; ?>" placeholder="Fecha final"
+					<input type="date" id="fecha2" name="fecha2" value="<?php echo $this->fecha2_param; ?>" placeholder="Fecha final"
 						class="form-control">
 				</div>
 				<div class="col-lg-3">
@@ -240,16 +240,16 @@ function fecha_letras($fecha)
 
 			let chartType = 'line';
 			<?php
-			if ($_GET['tipo'] == "") {
+			if ($this->tipo == "") {
 				echo "chartType = 'line';";
 			}
-			if ($_GET['tipo'] == "2") {
+			if ($this->tipo == "2") {
 				echo "chartType = 'scatter';";
 			}
-			if ($_GET['tipo'] == "3") {
+			if ($this->tipo == "3") {
 				echo "chartType = 'bar';";
 			}
-			if ($_GET['tipo'] == "4") {
+			if ($this->tipo == "4") {
 				echo "chartType = 'pie';";
 			}
 			?>

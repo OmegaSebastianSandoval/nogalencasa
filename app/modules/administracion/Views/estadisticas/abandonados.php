@@ -81,16 +81,16 @@ $Total2 = 0;
 
 		let chartType_abandonados = 'line';
 		<?php
-		if ($_GET['tipo'] == "") {
+		if ($this->tipo == "") {
 			echo "chartType_abandonados = 'line';";
 		}
-		if ($_GET['tipo'] == "2") {
+		if ($this->tipo == "2") {
 			echo "chartType_abandonados = 'scatter';";
 		}
-		if ($_GET['tipo'] == "3") {
+		if ($this->tipo == "3") {
 			echo "chartType_abandonados = 'bar';";
 		}
-		if ($_GET['tipo'] == "4") {
+		if ($this->tipo == "4") {
 			echo "chartType_abandonados = 'pie';";
 		}
 		?>

@@ -73,7 +73,7 @@ footer .derechos {
 
 <div>
 	<form method="post" action="/page/login/guardarclave" class="col-md-12 ">
-		<?php if($_GET['registro']==1){ ?>
+		<?php if($this->registro==1){ ?>
 			<div class="alert alert-warning">Apreciado socio, su registro se realizó de forma exitosa. por favor ingrese su información de acceso:</div>
 		<?php } ?>
 		<div align="center" class="caja_registro alto-login">
@@ -118,17 +118,17 @@ footer .derechos {
 	  	</div>
 
 
-		<?php if ($_GET['error']=="1"): ?>
+		<?php if ($this->error=="1"): ?>
 			<div class="col-md-12"><br></div>
 			<div class="alert alert-danger col-md-12 text-center">El documento no es válido</div>
 		<?php endif ?>
-		<?php if ($_GET['error']=="2"): ?>
+		<?php if ($this->error=="2"): ?>
 			<div class="col-md-12"><br></div>
 			<div class="alert alert-danger col-md-12 text-center">Usuario inactivo</div>
 		<?php endif ?>
 
 		<input type="hidden" id="score1" value="0">
-		<input type="hidden" name="invitado" value="<?= $_GET['invitado']; ?>">
+		<input type="hidden" name="invitado" value="<?= $this->invitado; ?>">
 
 	</form>
 </div>

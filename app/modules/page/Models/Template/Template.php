@@ -64,8 +64,8 @@ class Page_Model_Template_Template
 		}
 		$this->_view->contenidos = $contenidos;
 		/*echo "<pre>";
-														print_r($contenidos);
-														echo "</pre>";*/
+															print_r($contenidos);
+															echo "</pre>";*/
 		return $this->_view->getRoutPHP("modules/page/Views/template/contenedor.php");
 	}
 	public function getProductos($buscar)
@@ -88,7 +88,7 @@ class Page_Model_Template_Template
 		$total = count($productos);
 		$paginas = ceil($total / $amount);
 
-		$page = $_GET["page"];
+		$page = $this->_view->pageParam;
 		if (!$page && Session::getInstance()->get($this->namepageactual)) {
 			$page = Session::getInstance()->get($this->namepageactual);
 			$start = ($page - 1) * $amount;
@@ -176,7 +176,7 @@ class Page_Model_Template_Template
 
 
 
-		$page = $_GET["page"];
+		$page = $this->_view->pageParam;
 		if (!$page && Session::getInstance()->get($this->namepageactual)) {
 			$page = Session::getInstance()->get($this->namepageactual);
 			$start = ($page - 1) * $amount;
@@ -189,14 +189,14 @@ class Page_Model_Template_Template
 			$start = ($page - 1) * $amount;
 		}
 
-if($nuevo ==1){
-    $productosdestacados = $productosModel->getListPages(" producto_activo='1' AND (productos_cantidad>0 AND productos_cantidad!='') AND productos_nuevo = 1 $f1 ", " productos_imagen ='' ASC ", $start, $amount);
-}else{
- 		$productosdestacados = $productosModel->getListPages(" producto_activo='1' AND (productos_cantidad>0 AND productos_cantidad!='') AND productos_categorias = '$categoria' $f1 ", " productos_imagen ='' ASC ", $start, $amount);
-   
-}
-		
-		
+		if ($nuevo == 1) {
+			$productosdestacados = $productosModel->getListPages(" producto_activo='1' AND (productos_cantidad>0 AND productos_cantidad!='') AND productos_nuevo = 1 $f1 ", " productos_imagen ='' ASC ", $start, $amount);
+		} else {
+			$productosdestacados = $productosModel->getListPages(" producto_activo='1' AND (productos_cantidad>0 AND productos_cantidad!='') AND productos_categorias = '$categoria' $f1 ", " productos_imagen ='' ASC ", $start, $amount);
+
+		}
+
+
 		shuffle($productosdestacados);
 		$kt_cedula = $_SESSION['kt_cedula'];
 
@@ -220,7 +220,7 @@ if($nuevo ==1){
 		// print_r($productos);
 
 		//SI ES LA CATEGORIA FAVORITA SE MANDA UNA BANDERA PARA MOSTRAR LA ETIQUETA DE NUEVO
-		($favorita && $favorita != '' || $nuevo ==1) ? $this->_view->cat = true : false;
+		($favorita && $favorita != '' || $nuevo == 1) ? $this->_view->cat = true : false;
 		// print_r($categoria);
 
 		$this->_view->register_number = count($productos);
@@ -256,7 +256,7 @@ if($nuevo ==1){
 
 
 
-		$page = $_GET["page"];
+		$page = $this->_view->pageParam;
 		if (!$page && Session::getInstance()->get($this->namepageactual)) {
 			$page = Session::getInstance()->get($this->namepageactual);
 			$start = ($page - 1) * $amount;
@@ -313,20 +313,20 @@ if($nuevo ==1){
 
 		}
 		/* foreach ($categorias as $key => $value) {
-				
-						
-						foreach ($value->hijos as $key2 => $value2) {
-							$nietos = $categoriasModel->getList(" categorias_padre='$value2->categorias_id' ", " orden ASC ");
-							$value2->nietos = $nietos;
-						
-						}
+					
+							
+							foreach ($value->hijos as $key2 => $value2) {
+								$nietos = $categoriasModel->getList(" categorias_padre='$value2->categorias_id' ", " orden ASC ");
+								$value2->nietos = $nietos;
+							
+							}
 
 
-					} */
+						} */
 		/* foreach ($rescontenidos as $key => $contenido) {
 
-						  $contenidos[$key] = [];
-						  $contenidos[$key]['detalle'] = $contenido; */
+								$contenidos[$key] = [];
+								$contenidos[$key]['detalle'] = $contenido; */
 
 		$this->_view->categorias2 = $categorias;
 
@@ -365,7 +365,7 @@ if($nuevo ==1){
 
 
 
-		$page = $_GET["page"];
+		$page = $this->_view->pageParam;
 		if (!$page && Session::getInstance()->get($this->namepageactual)) {
 			$page = Session::getInstance()->get($this->namepageactual);
 			$start = ($page - 1) * $amount;
@@ -429,13 +429,13 @@ if($nuevo ==1){
 
 		return $this->_view->getRoutPHP("modules/page/Views/template/productosnew.php");
 		/* 	$this->_view->register_number = count($productos);
-								 $this->_view->pages = $this->pages;
-								 $this->_view->totalpages = ceil(count($productos) / $amount);
+									 $this->_view->pages = $this->pages;
+									 $this->_view->totalpages = ceil(count($productos) / $amount);
 
-								 // echo $this->_view->totalpages;
-								 $this->_view->page = $page;
+									 // echo $this->_view->totalpages;
+									 $this->_view->page = $page;
 
-								 return $this->_view->getRoutPHP("modules/page/Views/template/productosnew.php"); */
+									 return $this->_view->getRoutPHP("modules/page/Views/template/productosnew.php"); */
 	}
 
 	public function getProductosFilter($filter)
@@ -468,7 +468,7 @@ if($nuevo ==1){
 
 
 
-		$page = $_GET["page"];
+		$page = $this->_view->pageParam;
 		if (!$page && Session::getInstance()->get($this->namepageactual)) {
 			$page = Session::getInstance()->get($this->namepageactual);
 			$start = ($page - 1) * $amount;
@@ -533,13 +533,13 @@ if($nuevo ==1){
 		$this->_view->categorias2 = $categorias;
 
 		/* 	$this->_view->register_number = count($productosdestacados);
-								  $this->_view->pages = $this->pages;
-								  $this->_view->totalpages = ceil(count($productosdestacados) / $amount);
+										$this->_view->pages = $this->pages;
+										$this->_view->totalpages = ceil(count($productosdestacados) / $amount);
 
-								   echo $this->_view->totalpages;
-								  $this->_view->page = $page;
+										 echo $this->_view->totalpages;
+										$this->_view->page = $page;
 
-								  return $this->_view->getRoutPHP("modules/page/Views/template/productosnew.php"); */
+										return $this->_view->getRoutPHP("modules/page/Views/template/productosnew.php"); */
 		$this->_view->register_number = count($productos);
 		$this->_view->pages = $this->pages;
 		$this->_view->totalpages = ceil(count($productos) / $amount);

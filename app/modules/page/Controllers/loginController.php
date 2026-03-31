@@ -27,6 +27,15 @@ class Page_loginController extends Page_mainController
     }
     public function indexAction()
     {
+        $this->_view->registro = $this->_getSanitizedParam('registro');
+        $this->_view->success = $this->_getSanitizedParam('success');
+        $this->_view->cedula = $this->_getSanitizedParam('cedula');
+        $this->_view->error = $this->_getSanitizedParam('error');
+        $this->_view->taberna_express = $this->_getSanitizedParam('taberna_express');
+        $this->_view->anchor = $this->_getSanitizedParam('anchor');
+        $this->_view->mensaje = $this->_getSanitizedParam('mensaje');
+        $this->_view->prueba = $this->_getSanitizedParam('prueba');
+
         $this->getLayout()->setData("ocultarcarrito", 1);
         $this->getLayout()->setData("sin_header", 1);
         $this->_view->bannerlogin = $this->template->bannerlogin(5);
@@ -149,6 +158,13 @@ class Page_loginController extends Page_mainController
     }
     public function invitadoAction()
     {
+        $this->_view->registro = $this->_getSanitizedParam('registro');
+        $this->_view->error = $this->_getSanitizedParam('error');
+        $this->_view->cedula = $this->_getSanitizedParam('cedula');
+        $this->_view->solicitar = $this->_getSanitizedParam('solicitar');
+        $this->_view->taberna_express = $this->_getSanitizedParam('taberna_express');
+        $this->_view->anchor = $this->_getSanitizedParam('anchor');
+
         $this->getLayout()->setData("ocultarcarrito", 1);
         $this->getLayout()->setData("sin_header", 1);
         $this->_view->bannersimple = $this->template->bannerlogin(6);
@@ -168,6 +184,10 @@ class Page_loginController extends Page_mainController
 
     public function indexpruebaAction()
     {
+        $this->_view->registro = $this->_getSanitizedParam('registro');
+        $this->_view->cedula = $this->_getSanitizedParam('cedula');
+        $this->_view->error = $this->_getSanitizedParam('error');
+
         $this->getLayout()->setData("ocultarcarrito", 1);
     }
 
@@ -397,6 +417,10 @@ class Page_loginController extends Page_mainController
 
     public function recordarAction()
     {
+        $this->_view->registro = $this->_getSanitizedParam('registro');
+        $this->_view->cedula = $this->_getSanitizedParam('cedula');
+        $this->_view->error = $this->_getSanitizedParam('error');
+
         $contentModel = new Page_Model_DbTable_Content();
         $this->getLayout()->setData("ocultarcarrito", 1);
 
@@ -413,6 +437,9 @@ class Page_loginController extends Page_mainController
 
     public function recordar2Action()
     {
+        $this->_view->registro = $this->_getSanitizedParam('registro');
+        $this->_view->error = $this->_getSanitizedParam('error');
+
 
         // $this->setLayout('page_page');
         $this->getLayout()->setData("ocultarcarrito", 1);
@@ -470,6 +497,12 @@ class Page_loginController extends Page_mainController
 
     public function recordarsocioAction()
     {
+        $this->_view->registro = $this->_getSanitizedParam('registro');
+        $this->_view->success = $this->_getSanitizedParam('success');
+        $this->_view->cedula = $this->_getSanitizedParam('cedula');
+        $this->_view->ncar = $this->_getSanitizedParam('ncar');
+        $this->_view->error = $this->_getSanitizedParam('error');
+
         $this->_view->bannerlogin = $this->template->bannerlogin(5);
         $this->getLayout()->setData("ocultarcarrito", 1);
     }
@@ -477,6 +510,9 @@ class Page_loginController extends Page_mainController
 
     public function recordarsocio2Action()
     {
+        $this->_view->registro = $this->_getSanitizedParam('registro');
+        $this->_view->error = $this->_getSanitizedParam('error');
+
         $this->_view->bannerlogin = $this->template->bannerlogin(5);
         $this->getLayout()->setData("ocultarcarrito", 1);
         // Obtener y sanitizar los parámetros
@@ -550,6 +586,9 @@ class Page_loginController extends Page_mainController
         $this->getLayout()->setData("ocultarcarrito", 1);
         $this->_view->success = $this->_getSanitizedParam('success');
         $this->_view->error = $this->_getSanitizedParam('error');
+        $this->_view->t = $this->_getSanitizedParam('t');
+        $this->_view->codi = $this->_getSanitizedParam('codi');
+        $this->_view->ncar = $this->_getSanitizedParam('ncar');
     }
     public function cambiarclaveAction()
     {
@@ -993,6 +1032,10 @@ class Page_loginController extends Page_mainController
 
     public function invitacionAction()
     {
+        $this->_view->error = $this->_getSanitizedParam('error');
+        $this->_view->enviado = $this->_getSanitizedParam('enviado');
+        $this->_view->cedula = $this->_getSanitizedParam('cedula');
+
         $this->getLayout()->setData("ocultarcarrito", 1);
         $kt_accion = $_SESSION['kt_accion'];
         // echo $kt_accion;    
@@ -1247,6 +1290,10 @@ class Page_loginController extends Page_mainController
 
     public function actualizarclaveAction()
     {
+        $this->_view->registro = $this->_getSanitizedParam('registro');
+        $this->_view->error = $this->_getSanitizedParam('error');
+        $this->_view->invitado = $this->_getSanitizedParam('invitado');
+
         $this->getLayout()->setData("ocultarcarrito", 1);
         //print_r($_SESSION);
 

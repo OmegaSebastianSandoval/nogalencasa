@@ -86,7 +86,7 @@
 					</select>
 				</div>
 				<div class="col-3">
-					<?php $padre = (int) $_GET['padre']; ?>
+					<?php $padre = (int) $this->padre; ?>
 					<?php if ($_SESSION['kt_login_level'] == "1" or $_SESSION['kt_login_level'] == "3") { ?>
 						<div class="text-right"><a class="btn btn-sm btn-success"
 								href="<?php echo $this->route . "\manage?padre=" . $padre; ?>"> <i

@@ -21,7 +21,7 @@ body{
 
 <div>
 	<form method="post" action="/page/zonaprivada/login" class="col-md-12 ">
-		<?php if($_GET['registro']==1){ ?>
+		<?php if($this->registro==1){ ?>
 			<div class="alert alert-warning">Apreciado socio, su registro se realizó de forma exitosa. por favor ingrese su información de acceso:</div>
 		<?php } ?>
 		<div align="center" class="caja_registro alto-login">
@@ -29,7 +29,7 @@ body{
 				<div class="col-sm-12 col-md-12 margen_icono">
 					<div class="row">
 						<div class="col-md-12 text-left"><h3 class="titulo-verde1">Documento de identificación</h3></div>
-						<div class="col-md-12"><input type="text" name="cedula" required class="form-control texto_normal campo_login" value="<?php echo $_GET['cedula']; ?>" placeholder=""></div>
+						<div class="col-md-12"><input type="text" name="cedula" required class="form-control texto_normal campo_login" value="<?php echo $this->cedula; ?>" placeholder=""></div>
 
 					</div>
 				</div>
@@ -51,11 +51,11 @@ body{
 	  	</div>
 
 
-		<?php if ($_GET['error']=="1"): ?>
+		<?php if ($this->error=="1"): ?>
 			<div class="col-md-12"><br></div>
 			<div class="alert alert-danger col-md-12 text-center">El documento no es válido</div>
 		<?php endif ?>
-		<?php if ($_GET['error']=="2"): ?>
+		<?php if ($this->error=="2"): ?>
 			<div class="col-md-12"><br></div>
 			<div class="alert alert-danger col-md-12 text-center">Usuario inactivo</div>
 		<?php endif ?>

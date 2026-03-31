@@ -311,7 +311,7 @@
     </div>
 </label>
 <script>
-    <?php if ($_GET['error'] == "true") { ?>
+    <?php if ($this->error == "true") { ?>
         $('#myModal2').modal('show');
     <?php } ?>
 </script>

@@ -55,14 +55,14 @@
 		<form method="post" action="/page/login/index" class="form-login col-md-12 ">
 			<input type="hidden" name="_csrf" value="<?php echo md5("OMEGA" . date('Ymd')); ?>">
 
-			<?php if ($_GET['registro'] == 1) { ?>
+			<?php if ($this->registro == 1) { ?>
 				<div class="alert alert-warning">Apreciado socio, su registro se realizó de forma exitosa. por favor ingrese su
 					información de acceso:</div>
 			<?php } ?>
 
 			<div align="center" class="caja_registro alto-login">
 				<div class="col-md-12 col-lg-6 form-group">
-					<?php if ($_GET['success'] == 'ok') { ?>
+					<?php if ($this->success == 'ok') { ?>
 						<div class="alert alert-success">Su contraseña fue cambiada con exito.</div>
 					<?php } ?>
 					<div class="col-sm-12 col-md-12 margen_icono">
@@ -73,7 +73,7 @@
 								<span class="campo-login">N&uacute;mero de Acci&oacute;n</span>
 
 								<input type="text" name="cedula" required class="form-control texto_normal campo_login"
-									value="<?php echo $_GET['cedula']; ?>"
+									value="<?php echo $this->cedula; ?>"
 									placeholder="Ingrese aquí su n&uacute;mero de Acción (8 dígitos)">
 							</div>
 
@@ -100,16 +100,16 @@
 						<button class="btn btn-primary enviar" type="submit">Ingresar</button>
 					</div>
 
-					<?php if ($_GET['error'] == "1"): ?>
+					<?php if ($this->error == "1"): ?>
 						<div class="col-md-12"><br></div>
 						<div class="alert alert-danger col-md-12 text-center">La identificación no es válida o la contrase&ntilde;a es
 							incorrecta</div>
 					<?php endif ?>
-					<?php if ($_GET['error'] == "2"): ?>
+					<?php if ($this->error == "2"): ?>
 						<div class="col-md-12"><br></div>
 						<div class="alert alert-danger col-md-12 text-center">Usuario inactivo</div>
 					<?php endif ?>
-					<?php if ($_GET['error'] == "3"): ?>
+					<?php if ($this->error == "3"): ?>
 						<div class="col-md-12"><br></div>
 						<div class="alert alert-danger col-md-12 text-center">Usted ya tiene una contraseña segura asignada. Por
 							favor
@@ -128,8 +128,8 @@
 
 
 
-			<input type="hidden" name="taberna_express" value="<?= $_GET['taberna_express'] ?>">
-			<input type="hidden" name="anchor" value="<?= $_GET['anchor'] ?>">
+			<input type="hidden" name="taberna_express" value="<?= $this->taberna_express ?>">
+			<input type="hidden" name="anchor" value="<?= $this->anchor ?>">
 
 		</form>
 	<?php } else { ?>
@@ -165,20 +165,20 @@
 		<form method="post" action="/page/login/index" class="form-login col-md-12 ">
 			<input type="hidden" name="_csrf" value="<?php echo md5("OMEGA" . date('Ymd')); ?>">
 
-			<?php if ($_GET['registro'] == 1) { ?>
+			<?php if ($this->registro == 1) { ?>
 				<div class="alert alert-warning">Apreciado socio, su registro se realizó de forma exitosa. por favor ingrese su
 					información de acceso:</div>
 			<?php } ?>
 
 			<div align="center" class="caja_registro alto-login">
 				<div class="col-md-12 col-lg-6 form-group">
-					<?php if ($_GET['success'] == 'ok') { ?>
+					<?php if ($this->success == 'ok') { ?>
 						<div class="alert alert-success">Su contraseña fue cambiada con exito.</div>
 					<?php } ?>
 					<div class="col-sm-12 col-md-12 margen_icono">
 						<div class="row">
 							<div class="col-md-12"><input type="text" name="cedula" required
-									class="form-control texto_normal campo_login" value="<?php echo $_GET['cedula']; ?>"
+									class="form-control texto_normal campo_login" value="<?php echo $this->cedula; ?>"
 									placeholder="Ingrese aquí su nmero de Acción (8 dgitos)"></div>
 
 						</div>
@@ -201,16 +201,16 @@
 						<button class="btn btn-primary enviar" type="submit">Ingresar</button>
 					</div>
 
-					<?php if ($_GET['error'] == "1"): ?>
+					<?php if ($this->error == "1"): ?>
 						<div class="col-md-12"><br></div>
 						<div class="alert alert-danger col-md-12 text-center">La identificación no es válida o la contrase&ntilde;a es
 							incorrecta</div>
 					<?php endif ?>
-					<?php if ($_GET['error'] == "2"): ?>
+					<?php if ($this->error == "2"): ?>
 						<div class="col-md-12"><br></div>
 						<div class="alert alert-danger col-md-12 text-center">Usuario inactivo</div>
 					<?php endif ?>
-					<?php if ($_GET['error'] == "3"): ?>
+					<?php if ($this->error == "3"): ?>
 						<div class="col-md-12"><br></div>
 						<div class="alert alert-danger col-md-12 text-center">Usted ya tiene una contraseña segura asignada. Por
 							favor
@@ -229,15 +229,15 @@
 
 
 
-			<input type="hidden" name="taberna_express" value="<?= $_GET['taberna_express'] ?>">
-			<input type="hidden" name="anchor" value="<?= $_GET['anchor'] ?>">
+			<input type="hidden" name="taberna_express" value="<?= $this->taberna_express ?>">
+			<input type="hidden" name="anchor" value="<?= $this->anchor ?>">
 
 		</form>
 	</div>
 </div>
 
 
-<?php if ($_GET['mensaje'] != "") { ?>
+<?php if ($this->mensaje != "") { ?>
 
 	<!-- <script src="/components/jquery/dist/jquery.min.js"></script> -->
 	<script src="/components/jquery/jquery-3.6.0.min.js"></script>
@@ -260,10 +260,10 @@
 				</div>
 				<div class="modal-body">
 
-					<?php if ($_GET['mensaje'] == "1") { ?>
+					<?php if ($this->mensaje == "1") { ?>
 						Estimado socio,<br><br>
 					<?php } ?>
-					<?php if ($_GET['mensaje'] == "2") { ?>
+					<?php if ($this->mensaje == "2") { ?>
 						Estimado invitado,<br><br>
 					<?php } ?>
 
@@ -327,7 +327,7 @@
 		});
 	});
 </script>
-<?php if ($_GET['prueba'] == "" and date("Y-m-d H:i:s") < "2024-06-25 00:00:00") { ?>
+<?php if ($this->prueba == "" and date("Y-m-d H:i:s") < "2024-06-25 00:00:00") { ?>
 	<style>
 		.construccion {
 			position: absolute;

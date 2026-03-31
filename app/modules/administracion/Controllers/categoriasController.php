@@ -111,6 +111,7 @@ class Administracion_categoriasController extends Administracion_mainController
 		$this->_view->lists = $lists;
 		
 		$this->_view->csrf_section = $this->_csrf_section;
+		$this->_view->padre = $this->_getSanitizedParam("padre");
 	}
 
 	/**
@@ -121,6 +122,7 @@ class Administracion_categoriasController extends Administracion_mainController
 	public function manageAction()
 	{
 		$this->_view->route = $this->route;
+		$this->_view->padre = $this->_getSanitizedParam("padre");
 		$this->_csrf_section = "manage_categorias_" . date("YmdHis");
 		$this->_csrf->generateCode($this->_csrf_section);
 		$this->_view->csrf_section = $this->_csrf_section;

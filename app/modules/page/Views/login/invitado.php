@@ -94,7 +94,7 @@
 	<form method="post" action="/page/login/logininvitado" class="col-md-12 ">
 		<input type="hidden" name="_csrf" value="<?php echo md5("OMEGA" . date('Ymd')); ?>">
 
-		<?php if ($_GET['registro'] == 1 or $_GET['error'] == "false") { ?>
+		<?php if ($this->registro == 1 or $this->error == "false") { ?>
 			<div class="alert alert-warning text-center mt-3">Apreciado usuario, su registro se realizó de forma exitosa. por
 				favor ingrese su información de acceso:</div>
 		<?php } ?>
@@ -111,13 +111,13 @@
 						<div class="col-md-12" style="margin-top: 20px">
 							<span class="campo-login">Documento de identificaci&oacute;n</span>
 							<input type="text" name="cedula" required class="form-control texto_normal campo_login"
-								value="<?php echo $_GET['cedula']; ?>" placeholder="Identificación">
+								value="<?php echo $this->cedula; ?>" placeholder="Identificación">
 						</div>
 
 					</div>
 				</div>
 
-				<?php if ($_GET['solicitar'] == "1") { ?>
+				<?php if ($this->solicitar == "1") { ?>
 					<div class="col-sm-12 col-md-12">
 						<div class="row">
 							<div class="col-md-12 text-left d-none">
@@ -138,15 +138,15 @@
 		</div>
 
 
-		<?php if ($_GET['error'] == "1"): ?>
+		<?php if ($this->error == "1"): ?>
 			<div class="col-md-12"><br></div>
 			<div class="alert alert-danger col-md-12 text-center">El documento no es válido</div>
 		<?php endif ?>
-		<?php if ($_GET['error'] == "2"): ?>
+		<?php if ($this->error == "2"): ?>
 			<div class="col-md-12"><br></div>
 			<div class="alert alert-danger col-md-12 text-center">Usuario inactivo</div>
 		<?php endif ?>
-		<?php if ($_GET['error'] == "3"): ?>
+		<?php if ($this->error == "3"): ?>
 			<div class="col-md-12"><br></div>
 			<div class="alert alert-danger col-md-12 text-center">Contraseña incorrecta</div>
 		<?php endif ?>
@@ -162,8 +162,8 @@
 		<?php echo ($this->productosLoginResponsive) ?>
 
 
-		<input type="hidden" name="taberna_express" value="<?= $_GET['taberna_express'] ?>">
-		<input type="hidden" name="anchor" value="<?= $_GET['anchor'] ?>">
+		<input type="hidden" name="taberna_express" value="<?= $this->taberna_express ?>">
+		<input type="hidden" name="anchor" value="<?= $this->anchor ?>">
 
 	</form>
 </div>

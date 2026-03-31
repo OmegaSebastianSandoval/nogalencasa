@@ -316,11 +316,11 @@
 								$max = $this->page + 4;
 							}
 							$extra_params = '';
-							if (isset($_GET['categoria'])) {
-								$extra_params .= '&categoria=' . urlencode($_GET['categoria']);
+							if (isset($this->categoriaActiva)) {
+								$extra_params .= '&categoria=' . urlencode($this->categoriaActiva);
 							}
-							if (isset($_GET['subcategoria'])) {
-								$extra_params .= '&subcategoria=' . urlencode($_GET['subcategoria']);
+							if (isset($this->subcategoriaActiva)) {
+								$extra_params .= '&subcategoria=' . urlencode($this->subcategoriaActiva);
 							}
 							if ($this->totalpages > 1) {
 								if ($this->page != 1) {

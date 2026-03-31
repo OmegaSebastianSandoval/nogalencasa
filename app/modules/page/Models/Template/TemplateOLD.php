@@ -77,7 +77,7 @@ class Page_Model_Template_Template
 		$total = count($productos);
 		$paginas = ceil($total/$amount);
 
-		$page = $_GET["page"];
+			$page = $this->_view->pageParam;
 		if (!$page && Session::getInstance()->get($this->namepageactual)) {
 		   	$page = Session::getInstance()->get($this->namepageactual);
 		   	$start = ($page - 1) * $amount;
@@ -121,7 +121,7 @@ class Page_Model_Template_Template
 		$total = count($productos);
 		$paginas = ceil($total/$amount);
 
-		$page = $_GET["page"];
+		   $page = $this->_view->pageParam;
 		if (!$page && Session::getInstance()->get($this->namepageactual)) {
 		   	$page = Session::getInstance()->get($this->namepageactual);
 		   	$start = ($page - 1) * $amount;

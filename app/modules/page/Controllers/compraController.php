@@ -10,6 +10,7 @@ class Page_compraController extends Page_mainController
   public function indexAction()
   {
     // error_reporting(E_ALL);
+    $this->_view->error = $this->_getSanitizedParam('error');
 
     $ciudadesModel = new Page_Model_DbTable_Ciudad();
     $this->_view->ciudades = $ciudadesModel->getList("", "nombre ASC");
@@ -19,7 +20,7 @@ class Page_compraController extends Page_mainController
     $terminos = $this->getTerminos();
     // print_r($terminos);
 
-    if ($_GET['prueba'] == "1") {
+    if ($this->_getSanitizedParam('prueba') == "1") {
       //print_r($acompanamientos);
       // print_r($terminos);
 

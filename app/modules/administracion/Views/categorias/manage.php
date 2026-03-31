@@ -43,7 +43,7 @@
 				</div>
 
 
-				<input type="hidden" name="padre" value="<?php echo $_GET['padre']; ?>">
+				<input type="hidden" name="padre" value="<?php echo $this->padre; ?>">
 			</div>
 		</div>
 		<div class="botones-acciones">

@@ -16,12 +16,12 @@
 	<?php if ($_SESSION['kt_login_level'] != 5 and $_SESSION['kt_accion'] != "" and count($this->invitados) < 10) { ?>
 
 
-		<?php if ($_GET['error'] == "1"): ?>
+		<?php if ($this->error == "1"): ?>
 			<div class="col-md-12"><br></div>
 			<div class="alert alert-danger col-md-12 text-center">Un invitado ya se encuentra registrado con este correo en la
 				tienda.</div>
 		<?php endif ?>
-		<?php if ($_GET['error'] == "2"): ?>
+		<?php if ($this->error == "2"): ?>
 			<div class="col-md-12"><br></div>
 			<div class="alert alert-warning col-md-12 text-center">Este usuario ya había recibido una invitación previamente. La
 				invitación se ha reenviado con éxito.</div>
@@ -32,7 +32,7 @@
 
 			<div class="col-12 col-md-6 mb-4 order-2 order-md-1">
 				<form method="post" action="/page/login/enviarinvitacion" class="col-md-12 form-contact shadow-sm px-0">
-					<?php if ($_GET['enviado'] == 1 or $_GET['error'] == "false") { ?>
+					<?php if ($this->enviado == 1 or $this->error == "false") { ?>
 						<div class="alert alert-warning text-center">Invitación enviada</div>
 					<?php } ?>
 					<div align="center" class="caja_registro alto-login container  contenidocontacto ">
@@ -59,7 +59,7 @@
 							<div class="col-md-12 text-left">
 								<h3 class="titulo-verde1">Documento de identificación del invitado *</h3>
 							</div>
-							<div class="col-md-12"><input type="text" name="cedula" class="form-control texto_normal campo_login" value="<?php echo $_GET['cedula']; ?>" placeholder=""></div>
+							<div class="col-md-12"><input type="text" name="cedula" class="form-control texto_normal campo_login" value="<?php echo $this->cedula; ?>" placeholder=""></div>
 
 						</div>
 
@@ -127,7 +127,7 @@
 <?php } ?>
 
 
-<?php if ($_GET['enviado'] == "1") { ?>
+<?php if ($this->enviado == "1") { ?>
 	<script type="text/javascript">
 		Swal.fire({
 			title: 'Invitación enviada',

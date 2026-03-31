@@ -21,21 +21,21 @@ class Page_indexController extends Page_mainController
 	public function indexAction()
 	{
 
-$productosModel = new Administracion_Model_DbTable_Productos();
+		$productosModel = new Administracion_Model_DbTable_Productos();
 
 		$productos = $productosModel->getList(" productos_imagen != '' ", "orden ASC");
-		
+
 		//print_r($productos);
 		foreach ($productos as $key => $value) {
 
 			$nombreImagen = $value->productos_imagen;
-			$nombreImagenNuevo = $nombreImagen.'.jpg';
-			
+			$nombreImagenNuevo = $nombreImagen . '.jpg';
 
-		//	$productosModel->editField($value->productos_id, 'productos_imagen', $nombreImagenNuevo);
+
+			//	$productosModel->editField($value->productos_id, 'productos_imagen', $nombreImagenNuevo);
 		}
 		/* $socio = $this->consultarSocio();
-		print_r($socio); */
+			print_r($socio); */
 		$this->_view->bannerprincipal = $this->template->bannerprincipal('1');
 		// error_reporting(E_ALL);
 
@@ -62,18 +62,18 @@ $productosModel = new Administracion_Model_DbTable_Productos();
 			$this->_view->productos = $this->template->getProductosFilter($filter);
 		} elseif ($favoritos == 1) {
 			$this->botonactivo = 3;
-		
+
 			$this->_view->productos = $this->template->getProductosFav();
 		} else {
 			//TRAER PRODUCTOS NUEVOS
-			$this->_view->productos = $this->template->getProductosf("", "", "",1);
+			$this->_view->productos = $this->template->getProductosf("", "", "", 1);
 
 		}
 		/* if ($catgoria != "") {
-												$this->_view->productos = $this->template->getProductosf($catgoria,$subcategoria);
-											}elseif ($catgoria == "") {
-												$this->_view->productos = $this->template->getProductos($buscar);
-											} */
+													$this->_view->productos = $this->template->getProductosf($catgoria,$subcategoria);
+												}elseif ($catgoria == "") {
+													$this->_view->productos = $this->template->getProductos($buscar);
+												} */
 
 		$categoriasModel = new Administracion_Model_DbTable_Categorias();
 		$this->_view->categorias = $categorias = $categoriasModel->getList(" categorias_padre='0' ", " orden ASC ");
@@ -101,6 +101,12 @@ $productosModel = new Administracion_Model_DbTable_Productos();
 	public function seleccionarAction()
 	{
 		//error_reporting(E_ALL);
+		$this->_view->prueba = $this->_getSanitizedParam('prueba');
+		$this->_view->simular_hora = $this->_getSanitizedParam('simular_hora');
+		$this->_view->taberna_express = $this->_getSanitizedParam('taberna_express');
+		$this->_view->anchor = $this->_getSanitizedParam('anchor');
+		$this->_view->cerrado = $this->_getSanitizedParam('cerrado');
+		$this->_view->abierto = $this->_getSanitizedParam('abierto');
 
 		//print_r($_SESSION);
 
@@ -127,6 +133,9 @@ $productosModel = new Administracion_Model_DbTable_Productos();
 
 	public function seleccionar2Action()
 	{
+		$this->_view->cerrado = $this->_getSanitizedParam('cerrado');
+		$this->_view->abierto = $this->_getSanitizedParam('abierto');
+
 		$contenidoModel = new Page_Model_DbTable_Contenido();
 		$this->_view->carta = $contenidoModel->getList("contenido_seccion = '13' AND contenido_estado='1' ", "orden ASC");
 	}
@@ -154,7 +163,7 @@ $productosModel = new Administracion_Model_DbTable_Productos();
 		$emailModel->getMail()->SMTPDebug = 0;
 		$emailModel->sed();
 		//echo $emailModel->getMail()->ErrorInfo;
-		
+
 		//header("HTTP/1.1 200 OK");
 	}
 
@@ -273,12 +282,12 @@ $productosModel = new Administracion_Model_DbTable_Productos();
 
 		echo json_encode($fotosproducto);
 	}
-	 public function pruebaenvioAction()
-  {
-    $this->setLayout('blanco');
-    $emailModel = new Core_Model_Mail();
-    $asunto = "PRUEBA DE ENVIO -  - NOGAL";
-    $tabla = "<table>
+	public function pruebaenvioAction()
+	{
+		$this->setLayout('blanco');
+		$emailModel = new Core_Model_Mail();
+		$asunto = "PRUEBA DE ENVIO -  - NOGAL";
+		$tabla = "<table>
       <thead>
         <tr>
           <th>Nombre</th>
@@ -300,50 +309,50 @@ $productosModel = new Administracion_Model_DbTable_Productos();
       </tbody>
     </table>";
 
-    $content = $tabla;
+		$content = $tabla;
 
-    $bccs = [
-      "desarrollo8@omegawebsystems.com",
-    ];
+		$bccs = [
+			"desarrollo8@omegawebsystems.com",
+		];
 
-    $emailModel->getMail()->Subject = $asunto;
-    $emailModel->getMail()->msgHTML($content);
-    $emailModel->getMail()->AltBody = $content;
-    $emailModel->getMail()->SMTPDebug = 1;
+		$emailModel->getMail()->Subject = $asunto;
+		$emailModel->getMail()->msgHTML($content);
+		$emailModel->getMail()->AltBody = $content;
+		$emailModel->getMail()->SMTPDebug = 1;
 
-    foreach ($bccs as $bcc) {
-      $emailModel->getMail()->addBCC($bcc);
-    }
-    //$emailModel->getMail()->addAddress($email);
+		foreach ($bccs as $bcc) {
+			$emailModel->getMail()->addBCC($bcc);
+		}
+		//$emailModel->getMail()->addAddress($email);
 
-    // Intentar enviar
-    $enviado = $emailModel->sed();
-    if (!$enviado) {
-      // Si falla, reintentar con Gmail
-      $mail = $emailModel->getMail();
-      // Reconfigurar
-      $mail->isSMTP();
-      $mail->SMTPDebug = 2;
-      $mail->SMTPSecure = "tls";
-      $mail->Host = "smtp.gmail.com'";
-      $mail->Port = 587;
-      $mail->SMTPAuth = true;
-      $mail->Username = "deliveryclubelnogal@gmail.com";
-      $mail->Password = "igijajtcfiayccjs";
-      $mail->setFrom("deliveryclubelnogal@gmail.com", "Nogal en casa");
-      // Limpiar destinatarios y volver a agregarlos
-      $mail->clearAddresses();
-      $mail->clearBCCs();
-      foreach ($bccs as $bcc) {
-        $mail->addBCC($bcc);
-      }
-      //$mail->addAddress($email);
-      $mail->Subject = $asunto;
-      $mail->msgHTML($content);
-      $mail->AltBody = $content;
-      $enviado = $mail->send();
-    }
-    echo $emailModel->getMail()->ErrorInfo;
-  }
+		// Intentar enviar
+		$enviado = $emailModel->sed();
+		if (!$enviado) {
+			// Si falla, reintentar con Gmail
+			$mail = $emailModel->getMail();
+			// Reconfigurar
+			$mail->isSMTP();
+			$mail->SMTPDebug = 2;
+			$mail->SMTPSecure = "tls";
+			$mail->Host = "smtp.gmail.com'";
+			$mail->Port = 587;
+			$mail->SMTPAuth = true;
+			$mail->Username = "deliveryclubelnogal@gmail.com";
+			$mail->Password = "igijajtcfiayccjs";
+			$mail->setFrom("deliveryclubelnogal@gmail.com", "Nogal en casa");
+			// Limpiar destinatarios y volver a agregarlos
+			$mail->clearAddresses();
+			$mail->clearBCCs();
+			foreach ($bccs as $bcc) {
+				$mail->addBCC($bcc);
+			}
+			//$mail->addAddress($email);
+			$mail->Subject = $asunto;
+			$mail->msgHTML($content);
+			$mail->AltBody = $content;
+			$enviado = $mail->send();
+		}
+		echo $emailModel->getMail()->ErrorInfo;
+	}
 
 }

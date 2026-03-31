@@ -1,6 +1,6 @@
 <?php
 
-if ($_GET['excel'] == "") {
+if ($this->excel == "") {
 	function codificar($x)
 	{
 		return $x;
@@ -17,18 +17,18 @@ if ($_GET['excel'] == "") {
 ?>
 
 
-<?php if ($_GET['excel'] == "") { ?>
+<?php if ($this->excel == "") { ?>
 	<form id="form1" name="form1" method="get" action="/administracion/pedidos/exportar/">
 		<div class="d-flex align-items-center justify-content-between mb-3 p-3 bg-light rounded">
 			<div class="row d-flex align-items-center w-100">
 			
 					<div class="col-12 col-lg-6 d-flex align-items-center gap-2">
 					<label class="me-2 fw-bold">Rango de fechas:</label>
-					<input type="date" name="fecha1" id="fecha1" value="<?php echo $_GET['fecha1']; ?>" class="form-control me-2"
+					<input type="date" name="fecha1" id="fecha1" value="<?php echo $this->fecha1; ?>" class="form-control me-2"
 						style="width: auto;" />
 					<span class="me-2">-</span>
 
-					<input type="date" name="fecha2" id="fecha2" value="<?php echo $_GET['fecha2']; ?>" class="form-control me-3"
+					<input type="date" name="fecha2" id="fecha2" value="<?php echo $this->fecha2; ?>" class="form-control me-3"
 						style="width: auto;" />
 				</div>
 				<div class="col-12 col-lg-2">
@@ -38,7 +38,7 @@ if ($_GET['excel'] == "") {
 					<a href="/administracion/pedidos/exportar/" class="btn btn-block btn-secondary me-2">Limpiar</a>
 				</div>
 				<div class="col-12 col-lg-2">
-					<a href="/administracion/pedidos/exportar/?fecha1=<?php echo $_GET['fecha1']; ?>&fecha2=<?php echo $_GET['fecha2']; ?>&excel=1"
+					<a href="/administracion/pedidos/exportar/?fecha1=<?php echo $this->fecha1; ?>&fecha2=<?php echo $this->fecha2; ?>&excel=1"
 						class="btn btn-success btn-block">Exportar</a>
 				</div>
 
@@ -54,7 +54,7 @@ if ($_GET['excel'] == "") {
 <div class="container">
 	<div style="max-height: 70vh; overflow-y: auto;">
 		<table class="table table-striped table-hover table-sm" style="font-size: 12px;"
-			border="<?php echo $_GET['excel'] != "" ? '1' : ''; ?>">
+			border="<?php echo $this->excel != "" ? '1' : ''; ?>">
 			<thead
 				style="position: sticky; top: 0; background-color: white; z-index: 1; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
 				<tr>

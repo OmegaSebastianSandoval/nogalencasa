@@ -30,9 +30,9 @@
 		<p class="txt-bienvenido"><span><i class="fa-regular fa-user"></i></span> Recuperación de contraseña</p>
 
 		<form action="/page/login/cambiarclave" method="post" class="row">
-			<input type="hidden" name="token" value="<?php echo $_GET['t'] ?>">
-			<input type="hidden" name="codi" value="<?php echo $_GET['codi'] ?>">
-			<input type="hidden" name="ncar" value="<?php echo $_GET['ncar'] ?>">
+			<input type="hidden" name="token" value="<?php echo $this->t ?>">
+			<input type="hidden" name="codi" value="<?php echo $this->codi ?>">
+			<input type="hidden" name="ncar" value="<?php echo $this->ncar ?>">
 
 			<div align="center" class="caja_registro alto-login">
 				<div class="col-lg-4 form-group">
@@ -72,7 +72,7 @@
 			</div>
 
 
-			<?php if ($_GET['error'] == "1") : ?>
+			<?php if ($this->error == "1") : ?>
 				<div class="col-md-12"><br></div>
 				<div class="alert alert-danger col-md-12 text-center">El documento no es válido</div>
 			<?php endif ?>

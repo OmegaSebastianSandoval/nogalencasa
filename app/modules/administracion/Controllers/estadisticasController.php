@@ -155,6 +155,10 @@ class Administracion_estadisticasController extends Administracion_mainControlle
 
 		$this->_view->productos_vendidos = $productos_vendidos;
 
+		$this->_view->fecha1_param = $this->_getSanitizedParam("fecha1");
+		$this->_view->fecha2_param = $this->_getSanitizedParam("fecha2");
+		$this->_view->tipo = $this->_getSanitizedParam("tipo");
+
 		//top compradores
 		$compradores = array();
 		foreach ($pedidos as $pedido) {

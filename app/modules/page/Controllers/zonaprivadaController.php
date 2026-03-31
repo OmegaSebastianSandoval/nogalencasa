@@ -9,6 +9,9 @@ class Page_zonaprivadaController extends Page_mainController
 
 	public function indexAction()
 	{
+		$this->_view->registro = $this->_getSanitizedParam('registro');
+		$this->_view->cedula = $this->_getSanitizedParam('cedula');
+		$this->_view->error = $this->_getSanitizedParam('error');
 
 		$this->getLayout()->setData("ocultarcarrito", 1);
 		$header = $this->_view->getRoutPHP('modules/page/Views/partials/headerzona.php');

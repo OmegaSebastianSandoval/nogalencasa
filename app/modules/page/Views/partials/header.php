@@ -35,8 +35,8 @@ $es_festivo = 0;
 if ($festivos->esFestivo(date("d"), date("m")) === true) {
 	$es_festivo = 1;
 }
-if ($_GET['simular_hora'] != "") {
-	$hora = $_GET['simular_hora'];
+if ($this->simular_hora != "") {
+	$hora = $this->simular_hora;
 }
 
 //horario express
@@ -367,7 +367,7 @@ foreach ($this->horarios2 as $key => $value) {
 
 
 					<!-- <?php if (1 == 1) { ?>
-						<?php if ($hora < "16:00:00" and $hora >= "08:00:00" and $_GET['cerrado'] == "" or $_GET['abierto'] == "1" or 1 == 1) { ?>
+						<?php if ($hora < "16:00:00" and $hora >= "08:00:00" and $this->cerrado == "" or $this->abierto == "1" or 1 == 1) { ?>
 							<tr>
 								<td>
 									<li class="item"><a href="https://cafeparis.clubelnogal.com/page/index/"

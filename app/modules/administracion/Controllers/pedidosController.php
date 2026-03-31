@@ -449,6 +449,9 @@ class Administracion_pedidosController extends Administracion_mainController
 
 	public function exportarAction()
 	{
+		$this->_view->excel = $this->_getSanitizedParam("excel");
+		$this->_view->fecha1 = $this->_getSanitizedParam("fecha1");
+		$this->_view->fecha2 = $this->_getSanitizedParam("fecha2");
 
 
 		$hoy = date("YmdHis");

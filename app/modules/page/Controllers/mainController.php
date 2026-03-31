@@ -13,8 +13,8 @@ class Page_mainController extends Controllers_Abstract
 	{
 		/* Session::getInstance()->set('ncar','');
 
-		
-			Session::getInstance()->set("socio", ''); */
+			
+				Session::getInstance()->set("socio", ''); */
 		$this->setLayout('page_page');
 		$this->_view->botonactivo = $this->botonactivo;
 
@@ -25,6 +25,10 @@ class Page_mainController extends Controllers_Abstract
 		$categoriasModel = new Administracion_Model_DbTable_Categorias();
 		$this->_view->categoriaActiva = $this->_getSanitizedParam('categoria');
 		$this->_view->subcategoriaActiva = $this->_getSanitizedParam('subcategoria');
+		$this->_view->pageParam = $this->_getSanitizedParam('page');
+		$this->_view->simular_hora = $this->_getSanitizedParam('simular_hora');
+		$this->_view->cerrado = $this->_getSanitizedParam('cerrado');
+		$this->_view->abierto = $this->_getSanitizedParam('abierto');
 
 		$hoy = date("H:i:s");
 		//$hoy = "16:00:00";
@@ -74,13 +78,13 @@ class Page_mainController extends Controllers_Abstract
 			}
 		}
 
-	
-		if ($_GET['online'] == 1) {
+
+		if ($this->_getSanitizedParam('online') == 1) {
 			$online = 1;
 			//$_SESSION['online'] = 1;
 		}
-		if ($_SESSION['online']== 1) {
-		//	$online = 1;
+		if ($_SESSION['online'] == 1) {
+			//	$online = 1;
 		}
 		if ($online == 1) {
 			$f1 = "";
@@ -132,7 +136,7 @@ class Page_mainController extends Controllers_Abstract
 			$this->_view->socio = $socio;
 		}
 
-      	if ($online == 0 and strpos($_SERVER['REQUEST_URI'], "/login") === FALSE and strpos($_SERVER['REQUEST_URI'], "/enviarbackup") === FALSE) {
+		if ($online == 0 and strpos($_SERVER['REQUEST_URI'], "/login") === FALSE and strpos($_SERVER['REQUEST_URI'], "/enviarbackup") === FALSE) {
 
 			header("Location:/page/login/logout");
 		}

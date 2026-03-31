@@ -43,7 +43,7 @@ $hora = date("H:i:s");
 
 				<div class="col-lg-4 ancho45 margen_caja1">
 					<div class="fondo_seleccion text-center">
-						<?php if($hora<"15:00:00" and $hora>="06:00:00" and $_GET['cerrado']=="" or $_GET['abierto']=="1"){ ?>
+						<?php if($hora<"15:00:00" and $hora>="06:00:00" and $this->cerrado=="" or $this->abierto=="1"){ ?>
 							<div class="margen_express"><img src="/corte/logo_cafeparis.png"></div>
 						<?php }else{ ?>
 							<div class="margen_express"><img src="/corte/logo_cafeparis.png" style="filter: grayscale(100%);"></div>
@@ -51,7 +51,7 @@ $hora = date("H:i:s");
 						<div class="texto_seleccion"><br>Pedido para recoger en el Club o recibir a domicilio, máximo en dos horas</div><br>
 						<div class="pedidos_unicamente">Pedidos únicamente entre 6 a.m. y 3 p.m.</div>
 
-						<?php if($hora<"15:00:00" and $hora>="06:00:00" and $_GET['cerrado']=="" or $_GET['abierto']=="1"){ ?>
+						<?php if($hora<"15:00:00" and $hora>="06:00:00" and $this->cerrado=="" or $this->abierto=="1"){ ?>
 							<div class="margen_boton3"><a href="https://express.clubelnogal.com/page/index"><button class="btn btn-azul">Ingresar</button></a></div>
 						<?php }else{ ?>
 							<?php echo $this->carta[0]->contenido_descripcion; ?>
@@ -65,7 +65,7 @@ $hora = date("H:i:s");
 
 				<div class="col-lg-4 ancho45">
 					<div class="fondo_seleccion text-center">
-						<?php if($hora<"15:00:00" and $hora>="10:00:00" and $_GET['cerrado']=="" or $_GET['abierto']=="1"){ ?>
+						<?php if($hora<"15:00:00" and $hora>="10:00:00" and $this->cerrado=="" or $this->abierto=="1"){ ?>
 							<div class="margen_express"><img src="/corte/Logo_Taberna_Express.png"></div>
 						<?php }else{ ?>
 							<div class="margen_express"><img src="/corte/Logo_Taberna_Express_Bl.png"></div>
@@ -74,7 +74,7 @@ $hora = date("H:i:s");
 						o recibir a domicilio en dos horas</div><br>
 						<div class="pedidos_unicamente">Pedidos únicamente entre 10 a.m. a 3 p.m.</div>
 
-						<?php if($hora<"15:00:00" and $hora>="10:00:00" and $_GET['cerrado']=="" or $_GET['abierto']=="1"){ ?>
+						<?php if($hora<"15:00:00" and $hora>="10:00:00" and $this->cerrado=="" or $this->abierto=="1"){ ?>
 							<div class="margen_boton1"><a href="https://express.clubelnogal.com/page/index"><button class="btn btn-verde">Ingresar</button></a></div>
 						<?php }else{ ?>
 							<?php echo $this->carta[0]->contenido_descripcion; ?>

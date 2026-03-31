@@ -81,16 +81,16 @@ $Total2 = 0;
 
 		let chartType_clientes = 'line';
 		<?php
-		if ($_GET['tipo'] == "") {
+		if ($this->tipo == "") {
 			echo "chartType_clientes = 'line';";
 		}
-		if ($_GET['tipo'] == "2") {
+		if ($this->tipo == "2") {
 			echo "chartType_clientes = 'scatter';";
 		}
-		if ($_GET['tipo'] == "3") {
+		if ($this->tipo == "3") {
 			echo "chartType_clientes = 'bar';";
 		}
-		if ($_GET['tipo'] == "4") {
+		if ($this->tipo == "4") {
 			echo "chartType_clientes = 'pie';";
 		}
 		?>

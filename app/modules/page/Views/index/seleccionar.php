@@ -14,7 +14,7 @@ function calcular_hora1($x){
 
 $festivos = new festivos();
 
-if($_GET['prueba']=="1"){
+if($this->prueba=="1"){
 	//echo "abril1: ".$festivos->esFestivo(1,4);
 	//echo "<br>abril2: ".$festivos->esFestivo(2,4);
 }
@@ -29,8 +29,8 @@ if($festivos->esFestivo(date("d"),date("m"))===true){
 $hora = date("H:i:s");
 $dia_semana = date("w");
 $fecha = date("Y-m-d");
-if($_GET['simular_hora']!=""){
-	$hora = $_GET['simular_hora'];
+if($this->simular_hora!=""){
+	$hora = $this->simular_hora;
 }
 
 //horario delivery
@@ -152,7 +152,7 @@ foreach ($this->horarios3 as $key => $value) {
 }
 </style>
 
-<?php if($_GET['taberna_express']==""){ ?>
+<?php if($this->taberna_express==""){ ?>
 <div class="container">
 	<div class="row">
 		<div class="col-lg-12">
@@ -163,7 +163,7 @@ foreach ($this->horarios3 as $key => $value) {
 
 				<div class="col-lg-4 ancho45 margen_caja1">
 					<div class="fondo_seleccion text-center" >
-						<?php if($hora<"16:00:00" and $hora>="08:00:00" and $_GET['cerrado']=="" or $_GET['abierto']=="1" or 1==1){ ?>
+						<?php if($hora<"16:00:00" and $hora>="08:00:00" and $this->cerrado=="" or $this->abierto=="1" or 1==1){ ?>
 							<div class="margen_express"><img src="/corte/logo_cafeparis.png"></div>
 						<?php }else{ ?>
 							<div class="margen_express"><img src="/corte/logo_cafeparis.png" style="filter: grayscale(100%);"></div>
@@ -293,12 +293,12 @@ foreach ($this->horarios3 as $key => $value) {
 
 
 
-<?php if($_GET['taberna_express']=="1"){ ?>
+<?php if($this->taberna_express=="1"){ ?>
 
 <div align="center" class="p-5">Redireccionando...</div>
 
 <?php
-$anchor = explode("_",$_GET['anchor']);
+$anchor = explode("_",$this->anchor);
 ?>
 
 	<script type="text/javascript">

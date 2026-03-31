@@ -9,6 +9,8 @@ class Page_registroController extends Page_mainController
 
 	public function indexAction()
 	{
+		$this->_view->error = $this->_getSanitizedParam('error');
+
 		$this->getLayout()->setData("ocultarcarrito", 1);
 		$categoriaModel = new Administracion_Model_DbTable_Categorias();
 		$this->_view->categorias = $categoriaModel->getList(" categorias_padre='0' ", " orden ASC ");
