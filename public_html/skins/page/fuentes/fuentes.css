@@ -1,0 +1,45 @@
+@font-face {
+    font-family: 'Cocogoose';
+    src: url('Cocogoose-Light.woff2') format('woff2'),
+        url('Cocogoose-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Cocogoose';
+    src: url('Cocogoose.woff2') format('woff2'),
+        url('Cocogoose.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'Myriad Pro';
+    src: url('/skins/page/fuentes/MyriadPro-Regular.woff2') format('woff2'),
+        url('/skins/page/fuentes/MyriadPro-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'COCOGOOSE';
+    src: url('COCOGOOSE-UltraLight.woff2') format('woff2'),
+        url('COCOGOOSE-UltraLight.woff') format('woff');
+    font-weight: 200;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Cocogoose Pro';
+    src: url('CocogoosePro-Thin.eot');
+    src: url('CocogoosePro-Thin.eot?#iefix') format('embedded-opentype'),
+        url('CocogoosePro-Thin.woff2') format('woff2'),
+        url('CocogoosePro-Thin.woff') format('woff'),
+        url('CocogoosePro-Thin.ttf') format('truetype'),
+        url('CocogoosePro-Thin.svg#CocogoosePro-Thin') format('svg');
+    font-weight: 100;
+    font-style: normal;
+}
+

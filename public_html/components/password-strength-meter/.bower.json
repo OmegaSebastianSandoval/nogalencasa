@@ -1,0 +1,44 @@
+{
+  "name": "password-strength-meter",
+  "description": "A password strength meter plugin for jQuery",
+  "main": "jquery.password.js",
+  "authors": [
+    "Òscar Casajuana <elboletaire@gmail.com> (https://github.com/elboletaire)"
+  ],
+  "license": "GPL-3.0",
+  "keywords": [
+    "jquery-plugin",
+    "ecosystem:jquery",
+    "jquery",
+    "plugin",
+    "password",
+    "strength",
+    "meter",
+    "form",
+    "forms"
+  ],
+  "homepage": "https://github.com/elboletaire/password-strength-meter",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "gulpfile.js",
+    ".editorconfig",
+    "demo.html",
+    ".codeclimate.yml",
+    "example.png"
+  ],
+  "version": "2.1.0",
+  "_release": "2.1.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v2.1.0",
+    "commit": "2726e7e12dd3e48fd911fdb8d638f081db2d878d"
+  },
+  "_source": "https://github.com/elboletaire/password-strength-meter.git",
+  "_target": "^2.1.0",
+  "_originalSource": "password-strength-meter",
+  "_direct": true
+}

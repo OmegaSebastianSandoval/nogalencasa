@@ -1,0 +1,7 @@
+node_modules/
+framework/
+app/config/config.php
+vendor/
+public_html/images/
+public_html/corte/
+public_html/corte2/

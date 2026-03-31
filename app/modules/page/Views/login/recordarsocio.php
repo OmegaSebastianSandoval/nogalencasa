@@ -1,0 +1,68 @@
+<style>
+	.caja-items {
+		visibility: hidden;
+	}
+
+	.carrito {
+		visibility: hidden;
+	}
+
+	.disabled a {
+		pointer-events: none;
+	}
+
+	.carousel-item img,
+	.carousel-item {
+		height: auto !important;
+	}
+</style>
+<div class="container">
+	<?php echo $this->bannerlogin ?>
+	<div class="row">
+		<p class="txt-bienvenido"><span><i class="fa-regular fa-user"></i></span>Asignación o recuperación de contraseña</p>
+
+		<form method="post" action="/page/login/recordarsocio2" class="col-md-12 ">
+			<input type="hidden" name="_csrf" value="<?php echo md5("OMEGA" . date('Ymd')); ?>">
+
+			<?php if ($_GET['registro'] == 1) { ?>
+				<div class="alert alert-warning">Apreciado socio, su registro se realizó de forma exitosa. por favor ingrese su información de acceso:</div>
+			<?php } ?>
+
+			<div align="center" class="caja_registro alto-login">
+				<div class="col-lg-4 form-group">
+					<?php if ($_GET['success'] == 1) { ?>
+						<div class="alert alert-success"> Se ha enviado un correo para recuperar tu contraseña.
+						</div>
+					<?php } ?>
+					<div class="col-sm-12 col-md-12 margen_icono">
+						<div class="row">
+							<div class="col-md-12 text-left d-none">
+								<h3 class="titulo-verde1">Documento de identificación</h3>
+							</div>
+							<div class="col-md-12"><input type="text" name="cedula" required class="form-control texto_normal campo_login" value="<?php echo $_GET['cedula']; ?>" placeholder="Número de identificación"></div>
+
+
+							<div class="col-md-12"><input type="text" name="ncar" required class="form-control texto_normal campo_login" value="<?php echo $_GET['ncar']; ?>" placeholder="Número de Acción"></div>
+						</div>
+					</div>
+
+					<div class="col-md-12">
+						<br>
+						<button class="btn btn-primary enviar" type="submit">Validar</button>
+					</div>
+				</div>
+			</div>
+
+
+			<?php if ($_GET['error'] == "1") : ?>
+				<div class="col-md-12"><br></div>
+				<div class="alert alert-danger col-md-12 text-center">El documento no es válido</div>
+			<?php endif ?>
+			<?php if ($_GET['error'] == "2") : ?>
+				<div class="col-md-12"><br></div>
+				<div class="alert alert-danger col-md-12 text-center">Usuario inactivo</div>
+			<?php endif ?>
+
+
+		</form>
+	</div>

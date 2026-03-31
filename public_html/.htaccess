@@ -1,0 +1,35 @@
+
+# Forzar HTTPS
+RewriteEngine On
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Reglas existentes para redirigir todo a index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php [L]
+
+
+# php -- BEGIN cPanel-generated handler, do not edit
+
+# Set the “alt-php81” package as the default “PHP” programming language.
+
+<IfModule mime_module>
+  #AddHandler application/x-httpd-alt-php81 .php .php8 .phtml
+</IfModule>
+# php -- END cPanel-generated handler, do not edit
+ <IfModule mod_headers.c>
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+  Header unset X-Powered-By
+
+Header always set Content-Security-Policy "\
+ default-src 'self'; \
+ frame-ancestors 'none'; \
+ base-uri 'self'; \
+ object-src 'none'; \
+ script-src 'self' https://unpkg.com https://cloud.n1ed.com https://cloud.flmngr.com https://sweetalert.js.org https://cdn.jsdelivr.net https://s.ytimg.com https://cdn.public.flmngr.com https://cdnjs.cloudflare.com https://maps.googleapis.com https://www.gstatic.com https://www.google.com https://www.youtube.com https://www.googletagmanager.com https://www.google-analytics.com 'unsafe-inline'; \
+ style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://cdn.metroui.org.ua https://checkout.epayco.co https://secure.epayco.co https://www.gstatic.com"
+"
+</IfModule>
