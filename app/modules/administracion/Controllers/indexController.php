@@ -1,47 +1,47 @@
-<?php 
+<?php
 
 /**
-*
-*/
+ *
+ */
 
 class Administracion_indexController extends Controllers_Abstract
 {
 
-	protected $_csrf_section = "login_admin";
+    protected $_csrf_section = "login_admin";
 
-	public function indexAction()
-	{
-		$this->setLayout('administracion_login');
-		$this->getLayout()->setTitle("ACCESO A USUARIO");
-		$id = Session::getInstance()->get("kt_login_id");
-		$level = Session::getInstance()->get("kt_login_level");
-		if(isset($id) && $id > 0 && $level != 2 ){
-			header('Location: /administracion/panel');
-		}
-		$csrf = Session::getInstance()->get('csrf')[$this->_csrf_section];
-		$this->_view->csrf = $csrf;
-		$this->_view->error_login = Session::getInstance()->get("error_login");
-		Session::getInstance()->set("error_login","");
-	}
+    public function indexAction()
+    {
+        $this->setLayout('administracion_login');
+        $this->getLayout()->setTitle("ACCESO A USUARIO");
+        $id = Session::getInstance()->get("kt_login_id");
+        $level = Session::getInstance()->get("kt_login_level");
+        if (isset($id) && $id > 0 && $level != 2) {
+            header('Location: /administracion/panel');
+        }
+        $csrf = Session::getInstance()->get('csrf')[$this->_csrf_section];
+        $this->_view->csrf = $csrf;
+        $this->_view->error_login = Session::getInstance()->get("error_login");
+        Session::getInstance()->set("error_login", "");
+    }
 
-	public function olvidoAction()
-	{
-		$this->setLayout('administracion_login');
-		$this->getLayout()->setTitle("¿Haz olvidado tu contraseña?");
-		$id = Session::getInstance()->get("kt_login_id");
-		$level = Session::getInstance()->get("kt_login_level");
-		if(isset($id) && $id > 0 && $level != 2 ){
-			header('Location: /administracion/panel');
-		}
-		$csrf = Session::getInstance()->get('csrf')[$this->_csrf_section];
-		$this->_view->csrf = $csrf;
-		$this->_view->error_olvido = Session::getInstance()->get("error_olvido");
-		Session::getInstance()->set("error_olvido","");
-		$this->_view->mensaje_olvido = Session::getInstance()->get("mensaje_olvido");
-		Session::getInstance()->set("mensaje_olvido","");
-	}
+    public function olvidoAction()
+    {
+        $this->setLayout('administracion_login');
+        $this->getLayout()->setTitle("¿Haz olvidado tu contraseña?");
+        $id = Session::getInstance()->get("kt_login_id");
+        $level = Session::getInstance()->get("kt_login_level");
+        if (isset($id) && $id > 0 && $level != 2) {
+            header('Location: /administracion/panel');
+        }
+        $csrf = Session::getInstance()->get('csrf')[$this->_csrf_section];
+        $this->_view->csrf = $csrf;
+        $this->_view->error_olvido = Session::getInstance()->get("error_olvido");
+        Session::getInstance()->set("error_olvido", "");
+        $this->_view->mensaje_olvido = Session::getInstance()->get("mensaje_olvido");
+        Session::getInstance()->set("mensaje_olvido", "");
+    }
 
-	public function changepasswordAction()
+    public function changepasswordAction()
     {
         $this->setLayout('administracion_login');
         $this->getLayout()->setTitle("Cambiar Contraseña");
@@ -53,8 +53,8 @@ class Administracion_indexController extends Controllers_Abstract
                 $this->_view->error = "La información Suministrada es invalida.";
             }
         } else {
-        	$this->_view->usuario = $user['user']->user_user;
-        	new Core_Model_Csrf('nueva_contrasena');
+            $this->_view->usuario = $user['user']->user_user;
+            new Core_Model_Csrf('nueva_contrasena');
             $csrf = Session::getInstance()->get('csrf')['nueva_contrasena'];
             $password = $this->_getSanitizedParam("password");
             $re_password = $this->_getSanitizedParam("re_password");
@@ -76,8 +76,8 @@ class Administracion_indexController extends Controllers_Abstract
     protected function validarCodigo()
     {
         $res = [];
-        $code =  base64_decode($this->_getSanitizedParam("code"));
-        if (isset($code) && $this->isJson($code)== true) {
+        $code = base64_decode($this->_getSanitizedParam("code"));
+        if (isset($code) && $this->isJson($code) == true) {
             $code = json_decode($code, true);
             $modelUser = new Core_Model_DbTable_User();
             if (isset($code['user'])) {
@@ -86,17 +86,17 @@ class Administracion_indexController extends Controllers_Abstract
                     if ($user->user_code == $code['code']) {
                         $res['user'] = $user;
                     } else {
-                        $res['error'] =  1;
+                        $res['error'] = 1;
                         $res['user'] = $user;
                     }
                 } else {
-                    $res['error'] =  2;
+                    $res['error'] = 2;
                 }
             } else {
-                $res['error'] =  3;
+                $res['error'] = 3;
             }
         } else {
-            $res['error'] =  4;
+            $res['error'] = 4;
         }
         return $res;
     }
